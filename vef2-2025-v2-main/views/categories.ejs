@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Category Questions</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Questions</h1>
+    <% questions.forEach(q => { %>
+        <p><strong><%= q.question %></strong></p>
+        <ul>
+            <% if (q.answers && q.answers.length > 0) { %>
+                <% q.answers.forEach((a, index) => { %>
+                    <li>
+                        <label class="answer-label">
+                            <input type="checkbox" class="answer-checkbox" data-correct="<%= a.is_correct %>">
+                            <%= a.answer %>
+                        </label>
+                    </li>
+                <% }) %>
+            <% } else { %>
+                <li>No answers available</li>
+            <% } %>
+        </ul>
+    <% }) %>
+
+    <script>
+        document.querySelectorAll(".answer-checkbox").forEach(checkbox => {
+            checkbox.addEventListener("change", function() {
+                const label = this.parentElement;
+                if (this.checked) {
+                    if (this.dataset.correct === "true") {
+                        label.classList.add("correct");  // Highlight correct answer
+                    } else {
+                        label.classList.add("wrong");    // Highlight incorrect answer
+                    }
+                } else {
+                    label.classList.remove("correct", "wrong"); // Reset on uncheck
+                }
+            });
+        });
+    </script>
+</body>
+</html>

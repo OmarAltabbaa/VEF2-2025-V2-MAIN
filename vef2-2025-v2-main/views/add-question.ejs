@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Question</title>
+</head>
+<body>
+    <h1>Add a Question</h1>
+    <form action="/add-question" method="POST">
+        <label>Question:</label>
+        <input type="text" name="question" required>
+        
+        <label>Category:</label>
+        <select name="category_id">
+            <% categories.forEach(category => { %>
+                <option value="<%= category.id %>"><%= category.name %></option>
+            <% }) %>
+        </select>
+
+        <label>Answers:</label>
+        <input type="text" name="answers[0][text]" required>
+        <input type="checkbox" name="answers[0][is_correct]" value="true"> Correct
+        
+        <input type="text" name="answers[1][text]" required>
+        <input type="checkbox" name="answers[1][is_correct]" value="true"> Correct
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

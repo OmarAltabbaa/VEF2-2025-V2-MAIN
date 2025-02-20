@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: auto;
+}
+h1 {
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+}
+.answer-label {
+    display: block;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Highlight correct answers */
+.correct {
+    background-color: lightgreen;
+    border-color: green;
+}
+
+/* Highlight incorrect answers */
+.wrong {
+    background-color: lightcoral;
+    border-color: red;
+}

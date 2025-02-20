@@ -1,0 +1,16 @@
+<h1>Spurningar</h1>
+<% questions.forEach(q => { %>
+    <p><%= q.question %></p>
+    <ul>
+        <% questions.filter(a => a.id === q.id).forEach(a => { %>
+            <li>
+                <button class="answer-btn" data-correct="<%= a.is_correct %>">
+                    <%= a.answer %>
+                </button>
+            </li>
+        <% }) %>
+    </ul>
+<% }) %>
+
+<!-- Link to JavaScript file -->
+<script src="/script.js"></script>
