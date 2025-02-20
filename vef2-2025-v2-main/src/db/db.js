@@ -3,7 +3,16 @@ import dotenv from "dotenv";
 import xss from "xss";
 
 dotenv.config();
-const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });
+const pool = new pg.Pool({ 
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false,
+      },
+
+ });
+
+  
+  export default pool;
 
 export async function getCategories() {
     const result = await pool.query("SELECT * FROM categories");
